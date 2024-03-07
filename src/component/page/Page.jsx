@@ -1,15 +1,16 @@
 import "./Page.style.css"
 import {useEffect, useState} from "react";
 import Card from "../card/Card.jsx";
+import AddContent from "../addcontent/AddContent.jsx";
 
-const Page = ({entityTemplate}) => {
+const Page = ({entityTemplate, refreshContent}) => {
     const [entities, setEntities] = useState([])
 
     useEffect(() => {
         entityTemplate.getFunction().then(data => {
             setEntities(data)
         })
-    }, []);
+    }, [refreshContent]);
 
     return (
         <div className="page">
@@ -31,6 +32,8 @@ const Page = ({entityTemplate}) => {
                     )
                 })}
             </div>
+
+            <AddContent entityTemplate={entityTemplate} setEntities={setEntities}/>
         </div>
     )
 
