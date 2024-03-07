@@ -11,18 +11,22 @@ const Card = ({entity, inputs, setEntities, entityTemplate}) => {
         setEntityInCard({...entityInCard, [event.target.name]: event.target.value})
     };
 
+    useEffect(() => {
+        setEntityInCard(entity)
+    }, [entity]);
+
     return (
         <div className="card">
             {inputs.map(input => {
                 return (
-                    <div key={input.placeholder}>
+                    <div key={`${entityTemplate.name}${input.placeholder}`}>
                         <h3>{input.title}</h3>
                         <input
                             onChange={handleChange}
                             placeholder={input.placeholder}
                             type={input.type}
                             title={input.title}
-                            name = {input.name}
+                            name ={input.name}
                             value={entityInCard[input.value]}
                         />
 
