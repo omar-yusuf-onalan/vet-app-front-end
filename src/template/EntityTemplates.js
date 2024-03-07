@@ -1,7 +1,9 @@
 import {deleteCustomer, getCustomers, updateCustomer} from "../api/CustomerService.js";
 
-export const customerTemplate = {
+export const entityTemplates = [
+    {
     name: "Customer",
+    path: "/customers",
     inputs: [
         {
             placeholder: "Name",
@@ -45,5 +47,5 @@ export const customerTemplate = {
     createFunction: {},
     updateFunction: updateCustomer,
     deleteFunction: deleteCustomer
-
 }
+]
