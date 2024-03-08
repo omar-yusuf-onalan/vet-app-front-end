@@ -4,6 +4,7 @@ import Page from "./component/page/Page.jsx";
 import {entityTemplates} from "./template/EntityTemplates.js";
 import Navbar from "./component/navbar/Navbar.jsx";
 import {useState} from "react";
+import Home from "./Home.jsx";
 
 function App() {
     const [refreshContent, setRefreshContent] = useState(false)
@@ -13,6 +14,8 @@ function App() {
         <Navbar setRefreshContent={setRefreshContent} />
 
         <Routes>
+            <Route path="/" element={<Home />}></Route>
+
             {entityTemplates.map(entityTemplate => (
                 <Route
                     key={entityTemplate.name}
