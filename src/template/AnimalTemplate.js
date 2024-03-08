@@ -1,5 +1,11 @@
-import {createAnimal, deleteAnimal, getAnimals, updateAnimal} from "../api/AnimalService.js";
-import {getCustomers} from "../api/CustomerService.js";
+import {
+    createAnimal,
+    deleteAnimal,
+    filterAnimalsByCustomerName, filterAnimalsByName,
+    getAnimals,
+    updateAnimal
+} from "../api/AnimalService.js";
+import {filterCustomersByName, getCustomers} from "../api/CustomerService.js";
 
 const animalTemplate =
     {
@@ -74,13 +80,38 @@ const animalTemplate =
                     phone: ""
                 }
             ]
-
         ],
         children: [],
         getFunction: getAnimals,
         createFunction: createAnimal,
         updateFunction: updateAnimal,
-        deleteFunction: deleteAnimal
+        deleteFunction: deleteAnimal,
+        filters: [
+            {
+                filterBy: [
+                    {
+                        index: 0,
+                        placeholder:"Name",
+                        type: "text",
+                        name: "name",
+                        title: "Name"
+                    },
+                ],
+                filterFunction: filterAnimalsByName
+            },
+            {
+                filterBy: [
+                    {
+                        index: 0,
+                        placeholder:"Customer Name",
+                        type: "text",
+                        name: "customerName",
+                        title: "Customer Name"
+                    },
+                ],
+                filterFunction: filterAnimalsByCustomerName
+            }
+        ]
     }
 
 export default animalTemplate
