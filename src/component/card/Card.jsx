@@ -4,7 +4,7 @@ import Updater from "../updater/Updater.jsx";
 import {handleDelete, handleUpdate} from "../../handler/CRUDHandler.js";
 import Deleter from "../deleter/Deleter.jsx";
 
-const Card = ({entity, inputs, setEntities, entityTemplate}) => {
+const Card = ({entity, setEntities, entityTemplate}) => {
     const [entityInCard, setEntityInCard] = useState(entity)
 
     const handleChange = (event) => {
@@ -17,7 +17,7 @@ const Card = ({entity, inputs, setEntities, entityTemplate}) => {
 
     return (
         <div className="card">
-            {inputs.map(input => {
+            {entityTemplate.inputs.map(input => {
                 return (
                     <div key={`${entityTemplate.name}${input.placeholder}`}>
                         <h3>{input.title}</h3>

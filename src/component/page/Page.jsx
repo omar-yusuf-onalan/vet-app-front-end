@@ -38,7 +38,6 @@ const Page = ({entityTemplate, refreshContent}) => {
                         <div key={entity.id} className="card-container">
                             <Card
                                 entity={entity}
-                                inputs={entityTemplate.inputs}
                                 setEntities={setEntities}
                                 entityTemplate={entityTemplate}
                             />
