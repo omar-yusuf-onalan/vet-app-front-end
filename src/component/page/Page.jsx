@@ -2,14 +2,19 @@ import "./Page.style.css"
 import {useEffect, useState} from "react";
 import Card from "../card/Card.jsx";
 import AddContent from "../addcontent/AddContent.jsx";
+import Filter from "../filter/Filter.jsx";
 
 const Page = ({entityTemplate, refreshContent}) => {
     const [entities, setEntities] = useState([])
+    const [filteredEntities, setFilteredEntities] = useState([])
+    const [filter, setFilter] = useState("")
 
     useEffect(() => {
         entityTemplate.getFunction().then(data => {
             setEntities(data)
+            setFilteredEntities(data)
         })
+
     }, [refreshContent]);
 
     return (
@@ -19,7 +24,16 @@ const Page = ({entityTemplate, refreshContent}) => {
             <div className="page-content-container">
                 <h3>{entityTemplate.name} List</h3>
 
-                {entities.map(entity => {
+                <div className="filters-in-page">
+                {entityTemplate.filters?.map(filter => (
+                    <Filter
+                        key={filter.filterFunction}
+                        filter={filter}
+                        setFilteredEntities={setFilteredEntities}
+                    />
+                ))}
+                </div>
+                {filteredEntities.map(entity => {
                     return (
                         <div key={entity.id} className="card-container">
                             <Card
