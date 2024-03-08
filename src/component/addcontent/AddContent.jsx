@@ -1,6 +1,7 @@
 import "./AddContent.style.css"
 import {useState} from "react";
 import Select from "../select/Select.jsx";
+import AddChild from "../addchild/AddChild.jsx";
 
 const AddContent = ({entityTemplate, setEntities}) => {
     const [entityToBeAdded, setEntityToBeAdded] = useState(entityTemplate.entity)
@@ -42,6 +43,10 @@ const AddContent = ({entityTemplate, setEntities}) => {
             <div className="add-content-button">
                 <button onClick={handleClick}>Add</button>
             </div>
+
+            {entityTemplate.children?.map(childEntityTemplate => (
+                <AddChild childEntityTemplate={childEntityTemplate}/>
+            ))}
         </div>
     )
 }
