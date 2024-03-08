@@ -7,7 +7,6 @@ import Filter from "../filter/Filter.jsx";
 const Page = ({entityTemplate, refreshContent}) => {
     const [entities, setEntities] = useState([])
     const [filteredEntities, setFilteredEntities] = useState([])
-    const [filter, setFilter] = useState("")
 
     useEffect(() => {
         entityTemplate.getFunction().then(data => {
@@ -16,6 +15,10 @@ const Page = ({entityTemplate, refreshContent}) => {
         })
 
     }, [refreshContent]);
+
+    useEffect(() => {
+        setFilteredEntities(entities)
+    }, [entities]);
 
     return (
         <div className="page">
