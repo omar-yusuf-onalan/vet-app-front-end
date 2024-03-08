@@ -1,4 +1,10 @@
-import {createCustomer, deleteCustomer, getCustomers, updateCustomer} from "../api/CustomerService.js";
+import {
+    createCustomer,
+    deleteCustomer,
+    filterCustomersByName,
+    getCustomers,
+    updateCustomer
+} from "../api/CustomerService.js";
 
 const customerTemplate =
 {
@@ -52,7 +58,21 @@ const customerTemplate =
     getFunction: getCustomers,
     createFunction: createCustomer,
     updateFunction: updateCustomer,
-    deleteFunction: deleteCustomer
+    deleteFunction: deleteCustomer,
+    filters: [
+        {
+            filterBy: [
+                {
+                    index: 0,
+                    placeholder:"Name",
+                    type: "text",
+                    name: "name",
+                    title: "Name"
+                },
+            ],
+            filterFunction: filterCustomersByName
+        }
+    ]
 }
 
 export default customerTemplate
