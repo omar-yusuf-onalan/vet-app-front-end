@@ -9,6 +9,8 @@ const Navbar = ({setRefreshContent}) => {
 
     return (
         <div className="navbar">
+            <Link to="/" onClick={handleClick}>Home</Link>
+
             {entityTemplates.map(entityTemplate => (
                 <Link
                     key={entityTemplate.name}
