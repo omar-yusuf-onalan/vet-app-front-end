@@ -36,7 +36,11 @@ const AddContent = ({entityTemplate, setEntities}) => {
 
             <div className="add-content-selects">
                 {entityTemplate.parents.map(parent => (
-                    <Select key={parent[0].name} relation={parent} setEntityToBeAdded={setEntityToBeAdded}/>
+                    <Select
+                        key={parent[0].name}
+                        relation={parent}
+                        setEntityToBeAdded={setEntityToBeAdded}
+                    />
                 ))}
             </div>
 
