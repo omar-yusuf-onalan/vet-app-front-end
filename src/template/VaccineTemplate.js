@@ -1,11 +1,12 @@
 import {
     createVaccine,
-    deleteVaccine, filterVaccinesByAnimalName, filterVaccinesByTwoDates,
+    deleteVaccine,
+    filterVaccinesByAnimalName,
+    filterVaccinesByTwoDates,
     getVaccines,
     updateVaccine
 } from "../api/VaccineService.js";
-import {filterAnimalsByName, getAnimals} from "../api/AnimalService.js";
-import {getCustomers} from "../api/CustomerService.js";
+import {getAnimals} from "../api/AnimalService.js";
 import {getReports} from "../api/ReportService.js";
 
 const vaccineTemplate =

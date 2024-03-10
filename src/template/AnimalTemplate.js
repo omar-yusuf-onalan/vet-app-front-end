@@ -1,11 +1,12 @@
 import {
     createAnimal,
     deleteAnimal,
-    filterAnimalsByCustomerName, filterAnimalsByName,
+    filterAnimalsByCustomerName,
+    filterAnimalsByName,
     getAnimals,
     updateAnimal
 } from "../api/AnimalService.js";
-import {filterCustomersByName, getCustomers} from "../api/CustomerService.js";
+import {getCustomers} from "../api/CustomerService.js";
 
 const animalTemplate =
     {

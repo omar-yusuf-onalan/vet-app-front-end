@@ -1,9 +1,4 @@
-import {
-    createReport,
-    deleteReport,
-    getReports,
-    updateReport
-} from "../api/ReportService.js";
+import {createReport, deleteReport, getReports, updateReport} from "../api/ReportService.js";
 import {getAppointments} from "../api/AppointmentService.js";
 
 const reportTemplate =

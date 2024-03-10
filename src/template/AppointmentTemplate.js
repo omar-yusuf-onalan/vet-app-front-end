@@ -1,12 +1,13 @@
 import {
     createAppointment,
-    deleteAppointment, filterAppointmentsByAnimalNameAndTwoDates, filterAppointmentsByDoctorNameAndTwoDates,
+    deleteAppointment,
+    filterAppointmentsByAnimalNameAndTwoDates,
+    filterAppointmentsByDoctorNameAndTwoDates,
     getAppointments,
     updateAppointment
 } from "../api/AppointmentService.js";
 import {getDoctors} from "../api/DoctorService.js";
 import {getAnimals} from "../api/AnimalService.js";
-import {filterVaccinesByTwoDates} from "../api/VaccineService.js";
 
 const appointmentTemplate =
     {

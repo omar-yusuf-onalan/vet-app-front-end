@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 
 const Select = ({parentId, relation, setEntityToBeAdded }) => {
     const [entities, setEntities] = useState()
