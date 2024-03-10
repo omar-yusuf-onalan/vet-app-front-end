@@ -1,21 +1,10 @@
 import "./AddChild.style.css"
+import Page from "../page/Page.jsx";
 
-const AddChild = ({childEntityTemplate}) => {
+const AddChild = ({childEntityTemplate, refreshContent}) => {
     return (
             <div className="add-child">
-                {childEntityTemplate.inputs.map(input => (
-                    <div>
-                    <h3>Add {input.title}</h3>
-                    <input
-                        placeholder={input.placeholder}
-                        type={input.type}
-                        value={input.value}
-                        name={input.name}
-                        title={input.title}
-                    />
-                    </div>
-                    )
-                )}
+                <Page entityTemplate={childEntityTemplate} refreshContent={refreshContent}/>
             </div>
         )
 }
