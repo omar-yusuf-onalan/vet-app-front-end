@@ -6,6 +6,7 @@ import {
 } from "../api/VaccineService.js";
 import {filterAnimalsByName, getAnimals} from "../api/AnimalService.js";
 import {getCustomers} from "../api/CustomerService.js";
+import {getReports} from "../api/ReportService.js";
 
 const vaccineTemplate =
     {
@@ -64,6 +65,19 @@ const vaccineTemplate =
                     gender: "",
                     color: "",
                     dateOfBirth: "",
+                }
+            ],
+            [
+                {
+                    name: "report",
+                    option: "title",
+                    getFunction: getReports,
+                },
+                {
+                    id: 0,
+                    title: "",
+                    diagnosis: "",
+                    price: ""
                 }
             ]
         ],
