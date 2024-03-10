@@ -49,7 +49,11 @@ const Page = ({entityTemplate, refreshContent}) => {
                 })}
             </div>
 
-            <AddContent entityTemplate={entityTemplate} setEntities={setEntities}/>
+            <AddContent
+                entityTemplate={entityTemplate} 
+                setEntities={setEntities}
+                refreshContent={refreshContent}
+            />
         </div>
     )
 
