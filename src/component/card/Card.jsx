@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import Updater from "../updater/Updater.jsx";
 import {handleDelete, handleUpdate} from "../../handler/CRUDHandler.js";
 import Deleter from "../deleter/Deleter.jsx";
+import Select from "../select/Select.jsx";
 
 const Card = ({entity, setEntities, entityTemplate}) => {
     const [entityInCard, setEntityInCard] = useState(entity)
@@ -35,6 +36,10 @@ const Card = ({entity, setEntities, entityTemplate}) => {
                 )
                 }
             )}
+
+            {entityTemplate.parents?.map(parent => (
+                <Select relation={parent} setEntityToBeAdded={entityInCard}/>
+            ))}
 
             <Updater handlerFunction={
                 () => handleUpdate(entityInCard, setEntities, entityTemplate.updateFunction)}
