@@ -1,10 +1,13 @@
 import "./AddContent.style.css"
-import {useState} from "react";
+import {useContext, useState} from "react";
 import Select from "../select/Select.jsx";
 import AddChild from "../addchild/AddChild.jsx";
+import ErrorContext from "../../context/error/ErrorContext.jsx";
 
 const AddContent = ({entityTemplate, setEntities, refreshContent}) => {
     const [entityToBeAdded, setEntityToBeAdded] = useState(entityTemplate.entity)
+
+    const {setShowError, setErrorMessage} = useContext(ErrorContext)
 
     const handleChange = (event) => {
         setEntityToBeAdded({...entityToBeAdded, [event.target.name]: event.target.value})
@@ -13,6 +16,13 @@ const AddContent = ({entityTemplate, setEntities, refreshContent}) => {
     const handleClick = () => {
         entityTemplate.createFunction(entityToBeAdded).then(data => {
             setEntities(prev => [...prev, data])
+        }).catch((error)=> {
+            setShowError(true)
+            setErrorMessage(JSON.stringify(error.message))
+
+            setTimeout(() => {
+                setShowError(false)
+            }, 5000)
         })
 
         setEntityToBeAdded(entityTemplate.entity)
