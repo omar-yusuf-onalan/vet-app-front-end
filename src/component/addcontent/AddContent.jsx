@@ -48,6 +48,7 @@ const AddContent = ({entityTemplate, setEntities, refreshContent}) => {
                 {entityTemplate.parents.map(parent => (
                     <Select
                         key={parent[0].name}
+                        parentId={entityToBeAdded[parent[0].name] ? entityToBeAdded[parent[0].name].id : ""}
                         relation={parent}
                         setEntityToBeAdded={setEntityToBeAdded}
                     />

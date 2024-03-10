@@ -38,7 +38,12 @@ const Card = ({entity, setEntities, entityTemplate}) => {
             )}
 
             {entityTemplate.parents?.map(parent => (
-                <Select key={parent[0].name} relation={parent} setEntityToBeAdded={entityInCard}/>
+                <Select
+                    key={parent[0].name}
+                    parentId={entityInCard[parent[0].name] ? entityInCard[parent[0].name].id : ""}
+                    relation={parent}
+                    setEntityToBeAdded={entityInCard}
+                />
             ))}
 
             <Updater handlerFunction={

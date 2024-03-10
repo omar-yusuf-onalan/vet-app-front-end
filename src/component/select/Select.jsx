@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Select = ({ relation, setEntityToBeAdded }) => {
+const Select = ({parentId, relation, setEntityToBeAdded }) => {
     const [entities, setEntities] = useState()
     const [selectedEntityId, setSelectedEntityId] = useState(0)
 
@@ -19,7 +19,8 @@ const Select = ({ relation, setEntityToBeAdded }) => {
 
     return (
         <div className="select">
-            <select onChange={handleChange} value={selectedEntityId}>
+            <select onChange={handleChange} value={parentId}>
+                <option value="">Select a {relation[0].name}</option>
                 {entities?.map(mappedEntity => (
                     <option key={mappedEntity.id} value={mappedEntity.id}>{mappedEntity[relation[0].option]}</option>
                 ))}
