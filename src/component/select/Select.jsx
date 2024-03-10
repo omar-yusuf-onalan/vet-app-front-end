@@ -20,7 +20,6 @@ const Select = ({ relation, setEntityToBeAdded }) => {
     return (
         <div className="select">
             <select onChange={handleChange} value={selectedEntityId}>
-                <option value={null}>Select a {relation[0].name}</option>
                 {entities?.map(mappedEntity => (
                     <option key={mappedEntity.id} value={mappedEntity.id}>{mappedEntity[relation[0].option]}</option>
                 ))}
