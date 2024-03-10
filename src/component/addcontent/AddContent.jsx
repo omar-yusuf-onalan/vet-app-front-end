@@ -3,7 +3,7 @@ import {useState} from "react";
 import Select from "../select/Select.jsx";
 import AddChild from "../addchild/AddChild.jsx";
 
-const AddContent = ({entityTemplate, setEntities}) => {
+const AddContent = ({entityTemplate, setEntities, refreshContent}) => {
     const [entityToBeAdded, setEntityToBeAdded] = useState(entityTemplate.entity)
 
     const handleChange = (event) => {
@@ -49,7 +49,7 @@ const AddContent = ({entityTemplate, setEntities}) => {
             </div>
 
             {entityTemplate.children?.map(childEntityTemplate => (
-                <AddChild childEntityTemplate={childEntityTemplate}/>
+                <AddChild childEntityTemplate={childEntityTemplate} refreshContent={refreshContent}/>
             ))}
         </div>
     )
