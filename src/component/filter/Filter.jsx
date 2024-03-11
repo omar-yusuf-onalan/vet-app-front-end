@@ -1,7 +1,7 @@
 import "./Filter.style.css"
 import {useState} from "react";
 
-const Filter = ({filter, setFilteredEntities}) => {
+const Filter = ({filter, setFilteredEntities, entities}) => {
     const [inputValue, setInputValue] = useState([])
 
     const handleChange = (event, index) => {
@@ -12,6 +12,18 @@ const Filter = ({filter, setFilteredEntities}) => {
 
             return newArray
         })
+
+        let isEmpty = true
+        for (let i = 0; i < inputValue.length; i++) {
+            if (inputValue[i].length !== 0) {
+                isEmpty = false
+            }
+        }
+
+        if (isEmpty) {
+            setFilteredEntities(entities)
+            return
+        }
 
         filter.filterFunction(inputValue).then(data => {
             setFilteredEntities(data)
