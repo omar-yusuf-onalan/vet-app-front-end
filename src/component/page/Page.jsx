@@ -33,20 +33,24 @@ const Page = ({entityTemplate, refreshContent}) => {
                         key={filter.filterFunction}
                         filter={filter}
                         setFilteredEntities={setFilteredEntities}
+                        entities={entities}
                     />
                 ))}
                 </div>
+                <div className="card-container">
                 {filteredEntities.map(entity => {
                     return (
-                        <div key={entity.id} className="card-container">
-                            <Card
-                                entity={entity}
-                                setEntities={setEntities}
-                                entityTemplate={entityTemplate}
-                            />
-                        </div>
+
+                    <Card
+                        key={entity.id}
+                        entity={entity}
+                        setEntities={setEntities}
+                        entityTemplate={entityTemplate}
+                    />
+
                     )
                 })}
+                </div>
             </div>
 
             <AddContent
