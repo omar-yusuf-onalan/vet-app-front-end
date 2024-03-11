@@ -46,6 +46,7 @@ const Card = ({entity, setEntities, entityTemplate}) => {
                 />
             ))}
 
+            <div>
             <Updater handlerFunction={
                 () => handleUpdate(entityInCard, setEntities, entityTemplate.updateFunction)}
             />
@@ -53,6 +54,7 @@ const Card = ({entity, setEntities, entityTemplate}) => {
             <Deleter handlerFunction={
                 () => handleDelete(entityInCard, setEntities, entityTemplate.deleteFunction)}
             />
+            </div>
         </div>
     )
 }
