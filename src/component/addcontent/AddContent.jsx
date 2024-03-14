@@ -17,6 +17,7 @@ const AddContent = ({entityTemplate, setEntities, refreshContent}) => {
         entityTemplate.createFunction(entityToBeAdded).then(data => {
             setEntities(prev => [...prev, data])
         }).catch((error)=> {
+
             setShowError(true)
             setErrorMessage(JSON.stringify(error.message))
 
@@ -48,9 +49,9 @@ const AddContent = ({entityTemplate, setEntities, refreshContent}) => {
                 {entityTemplate.parents.map(parent => (
                     <Select
                         key={parent[0].name}
-                        parentId={entityToBeAdded[parent[0].name] ? entityToBeAdded[parent[0].name].id : ""}
                         relation={parent}
-                        setEntityToBeAdded={setEntityToBeAdded}
+                        entity={entityToBeAdded}
+                        setEntity={setEntityToBeAdded}
                     />
                 ))}
             </div>
@@ -58,10 +59,11 @@ const AddContent = ({entityTemplate, setEntities, refreshContent}) => {
             <div className="add-content-button">
                 <button onClick={handleClick}>Add</button>
             </div>
-
+            
             {entityTemplate.children?.map(childEntityTemplate => (
                 <AddChild childEntityTemplate={childEntityTemplate} refreshContent={refreshContent}/>
             ))}
+
         </div>
     )
 }
