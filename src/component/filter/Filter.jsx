@@ -6,13 +6,16 @@ const Filter = ({filter, setFilteredEntities, entities}) => {
 
     const handleChange = (event, index) => {
         setInputValue(prev => {
-            let newArray = prev
+            let newArray = [...prev]
 
             newArray[index] = event.target.value
 
             return newArray
-        })
+            }
+        )
+    }
 
+    const handleClick = () => {
         let isEmpty = true
         for (let i = 0; i < inputValue.length; i++) {
             if (inputValue[i].length !== 0) {
@@ -25,24 +28,24 @@ const Filter = ({filter, setFilteredEntities, entities}) => {
             return
         }
 
-        filter.filterFunction(inputValue).then(data => {
+        filter.filterFunction(...inputValue).then(data => {
             setFilteredEntities(data)
         })
     }
 
     return (
         <div className="filter">
-
             {filter.filterBy.map(argument => (
-                <input key={argument.name} onChange={() => handleChange(event, argument.index)}
+                <input key={argument.name} onChange={(event) => handleChange(event, argument.index)}
                        placeholder={argument.placeholder}
                        type={argument.type}
                        name={argument.name}
                        title={argument.title}
-                       value={inputValue}
+                       value={inputValue[argument.index]}
                 />
             ))}
 
+            <button className="filter-button" onClick={handleClick}>Search</button>
         </div>
     )
 }
