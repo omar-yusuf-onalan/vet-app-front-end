@@ -40,9 +40,9 @@ const Card = ({entity, setEntities, entityTemplate}) => {
             {entityTemplate.parents?.map(parent => (
                 <Select
                     key={parent[0].name}
-                    parentId={entityInCard[parent[0].name] ? entityInCard[parent[0].name].id : ""}
                     relation={parent}
-                    setEntityToBeAdded={entityInCard}
+                    entity={entityInCard}
+                    setEntity={setEntityInCard}
                 />
             ))}
 
