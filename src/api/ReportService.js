@@ -27,7 +27,7 @@ export const createReport = async (report) => {
 
 export const updateReport = async (report) => {
     const { data } = await axios.put(
-        import.meta.env.VITE_APP_BASE_URL + `reports`,
+        import.meta.env.VITE_APP_BASE_URL + `reports/${report.id}`,
         report
     );
 

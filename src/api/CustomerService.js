@@ -27,7 +27,7 @@ export const createCustomer = async (customer) => {
 
 export const updateCustomer = async (customer) => {
     const { data } = await axios.put(
-        import.meta.env.VITE_APP_BASE_URL + `customers`,
+        import.meta.env.VITE_APP_BASE_URL + `customers/${customer.id}`,
         customer
     );
 

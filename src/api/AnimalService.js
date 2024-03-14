@@ -27,7 +27,7 @@ export const createAnimal = async (animal) => {
 
 export const updateAnimal = async (animal) => {
     const { data } = await axios.put(
-        import.meta.env.VITE_APP_BASE_URL + `animals`,
+        import.meta.env.VITE_APP_BASE_URL + `animals/${animal.id}`,
         animal
     );
 

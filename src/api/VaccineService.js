@@ -27,7 +27,7 @@ export const createVaccine = async (vaccine) => {
 
 export const updateVaccine = async (vaccine) => {
     const { data } = await axios.put(
-        import.meta.env.VITE_APP_BASE_URL + `vaccines`,
+        import.meta.env.VITE_APP_BASE_URL + `vaccines/${vaccine.id}`,
         vaccine
     );
 

@@ -27,7 +27,7 @@ export const createAvailableDate = async (availableDate) => {
 
 export const updateAvailableDate = async (availableDate) => {
     const { data } = await axios.put(
-        import.meta.env.VITE_APP_BASE_URL + `availableDates`,
+        import.meta.env.VITE_APP_BASE_URL + `availableDates/${availableDate.id}`,
         availableDate
     );
 

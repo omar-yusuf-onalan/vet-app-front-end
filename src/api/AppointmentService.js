@@ -27,7 +27,7 @@ export const createAppointment = async (appointment) => {
 
 export const updateAppointment = async (appointment) => {
     const { data } = await axios.put(
-        import.meta.env.VITE_APP_BASE_URL + `appointments`,
+        import.meta.env.VITE_APP_BASE_URL + `appointments/${appointment.id}`,
         appointment
     );
 

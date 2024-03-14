@@ -27,7 +27,7 @@ export const createDoctor = async (doctor) => {
 
 export const updateDoctor = async (doctor) => {
     const { data } = await axios.put(
-        import.meta.env.VITE_APP_BASE_URL + `doctors`,
+        import.meta.env.VITE_APP_BASE_URL + `doctors/${doctor.id}`,
         doctor
     );
 
