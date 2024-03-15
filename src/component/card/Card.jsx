@@ -1,8 +1,5 @@
 import "./Card.style.css"
 import {useEffect, useState} from "react";
-import Updater from "../updater/Updater.jsx";
-import {handleDelete, handleUpdate} from "../../handler/CRUDHandler.js";
-import Deleter from "../deleter/Deleter.jsx";
 import Select from "../select/Select.jsx";
 
 const Card = ({entity, setEntities, entityTemplate}) => {
@@ -15,6 +12,18 @@ const Card = ({entity, setEntities, entityTemplate}) => {
     useEffect(() => {
         setEntityInCard(entity)
     }, [entity]);
+
+    const handleUpdate = () => {
+        entityTemplate.updateFunction(entityInCard).then((data) => {
+            setEntities((prev) => [...prev.filter((object) => object.id !== data.id), data]);
+        });
+    };
+
+    const handleDelete = () => {
+        entityTemplate.deleteFunction(entityInCard.id).then(() => {
+            setEntities((prev) => [...prev.filter((object) => object.id !== entityInCard.id)])
+        });
+    };
 
     return (
         <div className="card">
@@ -47,13 +56,10 @@ const Card = ({entity, setEntities, entityTemplate}) => {
             ))}
 
             <div>
-            <Updater handlerFunction={
-                () => handleUpdate(entityInCard, setEntities, entityTemplate.updateFunction)}
-            />
 
-            <Deleter handlerFunction={
-                () => handleDelete(entityInCard, setEntities, entityTemplate.deleteFunction)}
-            />
+            <button onClick={handleUpdate}>Update</button>
+
+            <button onClick={handleDelete}>Delete</button>
             </div>
         </div>
     )
