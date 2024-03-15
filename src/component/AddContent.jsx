@@ -1,8 +1,7 @@
-import "./AddContent.style.css"
 import {useContext, useState} from "react";
-import Select from "../select/Select.jsx";
-import AddChild from "../addchild/AddChild.jsx";
-import ErrorContext from "../../context/error/ErrorContext.jsx";
+import Select from "./Select.jsx";
+import AddChild from "./AddChild.jsx";
+import ErrorContext from "../context/error/ErrorContext.jsx";
 
 const AddContent = ({entityTemplate, setEntities, refreshContent}) => {
     const [entityToBeAdded, setEntityToBeAdded] = useState(entityTemplate.entity)
@@ -23,17 +22,20 @@ const AddContent = ({entityTemplate, setEntities, refreshContent}) => {
 
             setTimeout(() => {
                 setShowError(false)
-            }, 5000)
+            }, 2000)
         })
 
         setEntityToBeAdded(entityTemplate.entity)
     }
 
     return (
-        <div className="add-content">
-            <div className="add-content-inputs">
+        <div className="d-flex flex-column justify-content-center align-items-center p-3">
+            <h3>Add {entityTemplate.name}</h3>
+
+            <div>
                 {entityTemplate.inputs.map(input => (
                     <input
+                        className="border-dark rounded"
                         key={input.name}
                         onChange={handleChange}
                         placeholder={input.placeholder}
@@ -57,7 +59,7 @@ const AddContent = ({entityTemplate, setEntities, refreshContent}) => {
             </div>
 
             <div className="add-content-button">
-                <button onClick={handleClick}>Add</button>
+                <button className="btn btn-outline-primary" onClick={handleClick}>Add</button>
             </div>
             
             {entityTemplate.children?.map(childEntityTemplate => (

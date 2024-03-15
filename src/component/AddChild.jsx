@@ -1,9 +1,8 @@
-import "./AddChild.style.css"
-import Page from "../page/Page.jsx";
+import Page from "./Page.jsx";
 
 const AddChild = ({childEntityTemplate, refreshContent}) => {
     return (
-            <div className="add-child">
+            <div className="w-100">
                 <Page entityTemplate={childEntityTemplate} refreshContent={refreshContent}/>
             </div>
         )

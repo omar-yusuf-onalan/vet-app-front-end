@@ -1,4 +1,3 @@
-import "./Filter.style.css"
 import {useState} from "react";
 
 const Filter = ({filter, setFilteredEntities, entities}) => {
@@ -34,9 +33,11 @@ const Filter = ({filter, setFilteredEntities, entities}) => {
     }
 
     return (
-        <div className="filter">
+        <div className="d-flex justify-content-start gap-2">
             {filter.filterBy.map(argument => (
-                <input key={argument.name} onChange={(event) => handleChange(event, argument.index)}
+                <input key={argument.name}
+                       className="border-dark rounded"
+                       onChange={(event) => handleChange(event, argument.index)}
                        placeholder={argument.placeholder}
                        type={argument.type}
                        name={argument.name}
@@ -45,7 +46,7 @@ const Filter = ({filter, setFilteredEntities, entities}) => {
                 />
             ))}
 
-            <button className="filter-button" onClick={handleClick}>Search</button>
+            <button className="btn btn-outline-primary" onClick={handleClick}>Search</button>
         </div>
     )
 }

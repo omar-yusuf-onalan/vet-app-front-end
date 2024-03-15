@@ -1,4 +1,3 @@
-import "./Select.style.css"
 import React, {useEffect, useState} from 'react';
 
 const Select = ({relation, entity, setEntity }) => {
@@ -16,11 +15,11 @@ const Select = ({relation, entity, setEntity }) => {
     }
 
     return (
-        <div className="select">
+        <div className="border-dark rounded">
             <select onChange={handleChange} value={entity[relation[0].name]?.id || ""}>
-                <option value="">Select a {relation[0].name}</option>
+                <option className="border-dark rounded" value="">Select {relation[0].name}</option>
                 {entities?.map(mappedEntity => (
-                    <option key={mappedEntity.id} value={mappedEntity.id}>{mappedEntity[relation[0].option]}</option>
+                    <option className="border-dark rounded" key={mappedEntity.id} value={mappedEntity.id}>{mappedEntity[relation[0].option]}</option>
                 ))}
             </select>
         </div>
