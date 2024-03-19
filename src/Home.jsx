@@ -1,11 +1,11 @@
 const Home = () => {
     return (
-        <div className="home">
+        <div className="d-flex flex-column justify-content-center align-items-center p-3">
             <header>
                 <h1>Welcome to Veterinary Management System!</h1>
             </header>
 
-            <section>
+            <section className="w-50">
                 <h2>About The Project:</h2>
                 <p>Our Veterinary Management System aims to streamline the operations of veterinary clinics by providing
                     comprehensive backend and frontend solutions. Whether you're managing appointments, tracking
@@ -13,7 +13,7 @@ const Home = () => {
                     workflow more efficient.</p>
             </section>
 
-            <section>
+            <section className="w-50">
                 <h2>What It Offers:</h2>
                 <ul>
                     <li><strong>Efficient Backend Operations:</strong> We offer a robust backend system that allows for
