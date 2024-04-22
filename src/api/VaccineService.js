@@ -1,51 +1,77 @@
-import axios from "axios";
+import $ from 'jquery';
+
+const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 
 export const getVaccines = async () => {
-    const { data } = await axios.get(
-        import.meta.env.VITE_APP_BASE_URL + `vaccines`
-    );
-
-    return data;
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${BASE_URL}vaccines`,
+            type: 'GET',
+            success: resolve,
+            error: reject
+        });
+    });
 };
 
 export const deleteVaccine = async (id) => {
-    const { data } = await axios.delete(
-        import.meta.env.VITE_APP_BASE_URL + `vaccines/` + id
-    );
-
-    return data;
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${BASE_URL}vaccines/${id}`,
+            type: 'DELETE',
+            success: resolve,
+            error: reject
+        });
+    });
 };
 
 export const createVaccine = async (vaccine) => {
-    const { data } = await axios.post(
-        import.meta.env.VITE_APP_BASE_URL + `vaccines`,
-        vaccine
-    );
-
-    return data;
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${BASE_URL}vaccines`,
+            type: 'POST',
+            data: JSON.stringify(vaccine),
+            contentType: 'application/json',
+            success: resolve,
+            error: reject
+        });
+    });
 };
 
 export const updateVaccine = async (vaccine) => {
-    const { data } = await axios.put(
-        import.meta.env.VITE_APP_BASE_URL + `vaccines/${vaccine.id}`,
-        vaccine
-    );
-
-    return data;
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${BASE_URL}vaccines/${vaccine.id}`,
+            type: 'PUT',
+            data: JSON.stringify(vaccine),
+            contentType: 'application/json',
+            success: resolve,
+            error: reject
+        });
+    });
 };
 
 export const filterVaccinesByAnimalName = async (animalName) => {
-    const { data } = await axios.get(
-        import.meta.env.VITE_APP_BASE_URL + `vaccines/filter-by-animal-name/${animalName}`
-    );
-
-    return data;
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${BASE_URL}vaccines/filter-by-animal-name/${animalName}`,
+            type: 'GET',
+            success: resolve,
+            error: reject
+        });
+    });
 };
 
 export const filterVaccinesByTwoDates = async (startDate, finishDate) => {
-    const { data } = await axios.get(
-        import.meta.env.VITE_APP_BASE_URL + `vaccines/dates?start-date=${startDate}&finish-date=${finishDate}`
-    );
-
-    return data;
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${BASE_URL}vaccines/dates`,
+            type: 'GET',
+            data: {
+                'start-date': startDate,
+                'finish-date': finishDate
+            },
+            success: resolve,
+            error: reject
+        });
+    });
 };

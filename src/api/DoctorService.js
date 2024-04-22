@@ -1,35 +1,51 @@
-import axios from "axios";
+import $ from 'jquery';
+
+const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 
 export const getDoctors = async () => {
-    const { data } = await axios.get(
-        import.meta.env.VITE_APP_BASE_URL + `doctors`
-    );
-
-    return data;
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${BASE_URL}doctors`,
+            type: 'GET',
+            success: resolve,
+            error: reject
+        });
+    });
 };
 
 export const deleteDoctor = async (id) => {
-    const { data } = await axios.delete(
-        import.meta.env.VITE_APP_BASE_URL + `doctors/` + id
-    );
-
-    return data;
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${BASE_URL}doctors/${id}`,
+            type: 'DELETE',
+            success: resolve,
+            error: reject
+        });
+    });
 };
 
 export const createDoctor = async (doctor) => {
-    const { data } = await axios.post(
-        import.meta.env.VITE_APP_BASE_URL + `doctors`,
-        doctor
-    );
-
-    return data;
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${BASE_URL}doctors`,
+            type: 'POST',
+            data: JSON.stringify(doctor),
+            contentType: 'application/json',
+            success: resolve,
+            error: reject
+        });
+    });
 };
 
 export const updateDoctor = async (doctor) => {
-    const { data } = await axios.put(
-        import.meta.env.VITE_APP_BASE_URL + `doctors/${doctor.id}`,
-        doctor
-    );
-
-    return data;
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${BASE_URL}doctors/${doctor.id}`,
+            type: 'PUT',
+            data: JSON.stringify(doctor),
+            contentType: 'application/json',
+            success: resolve,
+            error: reject
+        });
+    });
 };
